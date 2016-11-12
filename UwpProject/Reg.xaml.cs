@@ -14,35 +14,33 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace UwpProject
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    
+    public sealed partial class Reg : Page
     {
-      
         string Username;
-        string Password;
-        public MainPage()
+        string password;
+        string email;
+        string role;
+
+        public Reg()
         {
             this.InitializeComponent();
         }
 
-       
-
-        private void registerBtn_Click(object sender, RoutedEventArgs e)
+        private async void submitReg_Click(System.Object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Reg));
-        }
-
-        private async void loginBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Username = usernameTbox.Text;
-            Password = PasswordTbox.Text;
-            string uri = "http://localhost:4567/login/" + usernameTbox.Text + "/" + PasswordTbox.Text;
+            Username = usernameReg.Text;
+            password = passwordReg.Text;
+            email = emailReg.Text;
+            role = roleReg.Text;
+            string uri = "http://localhost:4567/test/" + usernameReg.Text+"/"+passwordReg.Text+"/"+emailReg.Text+"/"+roleReg.Text;
             WebRequest wrGETURL = WebRequest.Create(uri);
             wrGETURL.Proxy = null;
 
@@ -51,21 +49,21 @@ namespace UwpProject
                 WebResponse response = await wrGETURL.GetResponseAsync();
                 Stream dataStream = response.GetResponseStream();
                 StreamReader objReader = new StreamReader(dataStream);
-                dynamic javaResponse= (objReader.ReadToEnd());
-                if (javaResponse=="success")
-                {
-                    this.Frame.Navigate(typeof(Rota));
-                }
+
+                //dynamic movie = JsonConvert.DeserializeObject(objReader.ReadToEnd());
+
                 response.Dispose();
             }
             catch (WebException ex)
             {
-                // if connection failed, output message to user
-               
+                //if connection failed, output message to user
                 errorMessage.Visibility = Visibility.Visible;
                 errorMessage.Text = "Failed to connect to server\nPlease check your internet connection";
             }
 
+
         }
+
+
     }
 }
