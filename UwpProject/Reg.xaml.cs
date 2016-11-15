@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Windows.UI.Notifications;
+using Microsoft.Toolkit.Uwp.Notifications; // Notifications library
+using Microsoft.QueryStringDotNET; // QueryString.NET
 using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -28,10 +31,49 @@ namespace UwpProject
         string password;
         string email;
         string role;
+              
 
         public Reg()
         {
             this.InitializeComponent();
+
+            
+        }
+        private void toast(string response)
+        {
+            ToastVisual visual = new ToastVisual()
+            {
+                BindingGeneric = new ToastBindingGeneric()
+                {
+                    Children =
+        {
+            new AdaptiveText()
+            {
+                Text = "error"
+            },
+
+            new AdaptiveText()
+            {
+                Text = response
+            },
+            
+        },
+
+                    
+                }
+            };
+
+
+            // Now we can construct the final toast content
+            ToastContent toastContent = new ToastContent()
+            {
+                Visual = visual,                
+            };
+
+            // And create the toast notification
+            var toast = new ToastNotification(toastContent.GetXml());
+            ToastNotificationManager.CreateToastNotifier().Show(toast);
+            toast.ExpirationTime = DateTime.Now.AddSeconds(3);
         }
 
         private async void submitReg_Click(System.Object sender, RoutedEventArgs e)
@@ -50,8 +92,11 @@ namespace UwpProject
                 Stream dataStream = response.GetResponseStream();
                 StreamReader objReader = new StreamReader(dataStream);
 
-                //dynamic movie = JsonConvert.DeserializeObject(objReader.ReadToEnd());
-
+                dynamic javaResponse = (objReader.ReadToEnd());
+                if (javaResponse == "Duplicate")
+                {
+                    toast(javaResponse);
+                }
                 response.Dispose();
             }
             catch (WebException ex)
@@ -59,6 +104,7 @@ namespace UwpProject
                 //if connection failed, output message to user
                 errorMessage.Visibility = Visibility.Visible;
                 errorMessage.Text = "Failed to connect to server\nPlease check your internet connection";
+                
             }
 
 
