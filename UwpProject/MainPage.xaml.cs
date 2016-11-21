@@ -54,7 +54,7 @@ namespace UwpProject
                 dynamic javaResponse= (objReader.ReadToEnd());
                 if (javaResponse=="Job Role")
                 {
-                    this.Frame.Navigate(typeof(Rota));
+                    this.Frame.Navigate(typeof(ManagerPage));
                 }
                 response.Dispose();
             }

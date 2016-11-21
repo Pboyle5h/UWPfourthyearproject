@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -25,6 +26,42 @@ namespace UwpProject
         public Rota()
         {
             this.InitializeComponent();
+        }
+
+        private async void addRota_Click(object sender, RoutedEventArgs e)
+        {
+         
+            string uri = "http://localhost:4567/rota/" + StartDate.Date.Day+"-" 
+                                                       + StartDate.Date.Month+"-"
+                                                       + StartDate.Date.Year+"/" 
+                                                       + StartTime.Time.Hours +":"
+                                                       + StartTime.Time.Minutes + "/" 
+                                                       + Details.Text + "/" 
+                                                       + Duration.SelectionBoxItem;
+            WebRequest wrGETURL = WebRequest.Create(uri);
+            wrGETURL.Proxy = null;
+
+            try
+            {
+                WebResponse response = await wrGETURL.GetResponseAsync();
+                Stream dataStream = response.GetResponseStream();
+                StreamReader objReader = new StreamReader(dataStream);
+
+                dynamic javaResponse = (objReader.ReadToEnd());
+                if (javaResponse == "Duplicate")
+                {
+                    //toast(javaResponse);
+                }
+                response.Dispose();
+            }
+            catch (WebException ex)
+            {
+                //if connection failed, output message to user
+               // errorMessage.Visibility = Visibility.Visible;
+               // errorMessage.Text = "Failed to connect to server\nPlease check your internet connection";
+
+            }
+        
         }
     }
 }

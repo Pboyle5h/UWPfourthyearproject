@@ -26,5 +26,10 @@ namespace UwpProject
         {
             this.InitializeComponent();
         }
+
+        private void rota_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Rota));
+        }
     }
 }
