@@ -52,7 +52,7 @@ namespace UwpProject
                 Stream dataStream = response.GetResponseStream();
                 StreamReader objReader = new StreamReader(dataStream);
                 dynamic javaResponse= (objReader.ReadToEnd());
-                if (javaResponse=="success")
+                if (javaResponse=="Job Role")
                 {
                     this.Frame.Navigate(typeof(Rota));
                 }
