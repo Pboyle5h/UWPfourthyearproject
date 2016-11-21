@@ -55,6 +55,8 @@ namespace UwpProject
                 if (javaResponse=="Job Role")
                 {
                     this.Frame.Navigate(typeof(ManagerPage));
+                    App.user = Username;
+                        
                 }
                 response.Dispose();
             }

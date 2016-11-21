@@ -31,7 +31,8 @@ namespace UwpProject
         private async void addRota_Click(object sender, RoutedEventArgs e)
         {
          
-            string uri = "http://localhost:4567/rota/" + StartDate.Date.Day+"-" 
+            string uri = "http://localhost:4567/rota/" +App.user+"/"
+                                                       + StartDate.Date.Day+"-" 
                                                        + StartDate.Date.Month+"-"
                                                        + StartDate.Date.Year+"/" 
                                                        + StartTime.Time.Hours +":"
