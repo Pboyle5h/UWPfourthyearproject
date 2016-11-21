@@ -7,5 +7,22 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"/>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock Margin="10,10,60,610" Text="Start:"/>
+        <DatePicker x:Name="StartDate" Margin="5,45,0,563"/>
+        <TimePicker x:Name="StartTime" Margin="5,87,0,521"/>
+        <TextBlock Margin="11,124,59,496" Text="Details:"/>
+        <TextBox x:Name="Details" Width="300" MaxLength="255" HorizontalAlignment="Left" Margin="5,149,0,384"/>
+        <TextBlock Margin="5,261,65,359" Text="Duration:"/>
+        <ComboBox x:Name="Duration" SelectedIndex="0" Margin="0,286,0,0">
+            <ComboBoxItem Tag="1" Content="1 hour"/>
+            <ComboBoxItem Tag="2" Content="2 hour"/>
+            <ComboBoxItem Tag="3" Content="3 hour"/>
+            <ComboBoxItem Tag="4" Content="4 hour"/>
+            <ComboBoxItem Tag="5" Content="5 hour"/>
+            <ComboBoxItem Tag="6" Content="6 hour"/>
+            <ComboBoxItem Tag="7" Content="7 hour"/>
+            <ComboBoxItem Tag="8" Content="8 hour"/>
+        </ComboBox>
+       </Grid>
 </Page>
