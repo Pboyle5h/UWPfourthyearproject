@@ -54,7 +54,7 @@ namespace UwpProject
                 dynamic javaResponse= (objReader.ReadToEnd());
                 if (javaResponse=="Job Role")
                 {
-                    this.Frame.Navigate(typeof(ManagerPage));
+                    this.Frame.Navigate(typeof(EmployeePage));
                     App.user = Username;
                         
                 }

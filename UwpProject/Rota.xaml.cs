@@ -32,6 +32,7 @@ namespace UwpProject
         {
          
             string uri = "http://localhost:4567/rota/" +App.user+"/"
+                                                       + StartDate.Date.DayOfWeek + "/"
                                                        + StartDate.Date.Day+"-" 
                                                        + StartDate.Date.Month+"-"
                                                        + StartDate.Date.Year+"/" 
