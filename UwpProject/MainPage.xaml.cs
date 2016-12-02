@@ -26,6 +26,7 @@ namespace UwpProject
       
         string Username;
         string Password;
+
         public MainPage()
         {
             this.InitializeComponent();

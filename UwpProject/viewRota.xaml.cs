@@ -22,6 +22,8 @@ namespace UwpProject
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    
+       
     public class RootObject
     {
         public string Date { get; set; }
@@ -43,8 +45,10 @@ namespace UwpProject
     }
 
     public sealed partial class viewRota : Page
-    {      
-    public viewRota()
+    {
+        List<RootObject> test = new List<RootObject>();
+        //RootObject test = new RootObject();
+        public viewRota()
         {
             this.InitializeComponent();
             rotaView();      
@@ -52,7 +56,7 @@ namespace UwpProject
 
     
 
-    private async void rotaView()
+    public async void rotaView()
         {
 
             string uri = "http://localhost:4567/viewRota/" + App.user;
@@ -68,7 +72,7 @@ namespace UwpProject
                 dynamic javaResponse = (objReader.ReadToEnd());   
                // RootObject rt = JsonConvert.DeserializeObject<RootObject>(javaResponse);
                 var list = JsonConvert.DeserializeObject<List<RootObject>>(javaResponse);
-                //RootObject rt = new RootObject();
+               
                 foreach (RootObject rt in list)
                 {
 
@@ -77,9 +81,16 @@ namespace UwpProject
                                      "\r\nDetails: " + rt.Details +
                                      "\r\nHours: " + rt.Hours+
                                      "\r\n\r\n";
+
+                    test = list;
+                    
+
+
+
+
                 }
-                
-                
+
+
 
 
 
@@ -94,13 +105,23 @@ namespace UwpProject
             }
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(viewRota));
-        }
+       
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
+
+
+            //textBlock.Text = test.Date + test.Details + test.Hours+ test.Time;
+            foreach (RootObject rt in test)
+            {
+
+                textBlockRota.Text += "Date: " + rt.Date +
+                                 "\r\nTime: " + rt.Time +
+                                 "\r\nDetails: " + rt.Details +
+                                 "\r\nHours: " + rt.Hours +
+                                 "\r\n\r\n";
+
+            }
 
         }
     }

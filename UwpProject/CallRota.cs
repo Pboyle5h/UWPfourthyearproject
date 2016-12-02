@@ -17,7 +17,7 @@ using Windows.UI.Xaml.Media;
 
 namespace UwpProject
 {
-    class Callendar
+   public class CallRota
     {
         public void Show(string content, string title)
         {
