@@ -31,5 +31,10 @@ namespace UwpProject
         {
             this.Frame.Navigate(typeof(Rota));
         }
+
+        private void addManager_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(AddMan));
+        }
     }
 }

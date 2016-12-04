@@ -16,10 +16,18 @@
             <TimePicker Name="StartTime" Margin="5"/>
             <TextBlock Margin="10" Text="Details:"/>
             <TextBox Name="Details" Width="300" MaxLength="255" HorizontalAlignment="Left"/>
-            <TextBlock Margin="10" Text="Duration:"/>
-            <ComboBox x:Name="Duration" SelectedIndex="0">
-                <ComboBoxItem Tag="30" Content="30 Minutes"/>
-                <ComboBoxItem Tag="60" Content="1 hour"/>
+            <TextBlock Margin="10" Text="Duration(Hours):"/>
+            <ComboBox x:Name="Duration" SelectedIndex="0" HorizontalAlignment="Left">
+                <ComboBoxItem Tag="1" Content="1"/>
+                <ComboBoxItem Tag="2" Content="2"/>
+                <ComboBoxItem Tag="3" Content="3"/>
+                <ComboBoxItem Tag="4" Content="4"/>
+                <ComboBoxItem Tag="5" Content="5"/>
+                <ComboBoxItem Tag="6" Content="6"/>
+                <ComboBoxItem Tag="7" Content="7"/>
+                <ComboBoxItem Tag="8" Content="8"/>
+                <ComboBoxItem Tag="9" Content="9"/>
+                <ComboBoxItem Tag="10" Content="10"/>
             </ComboBox>
             <Button x:Name="addRota" Content="Add"  VerticalAlignment="Top" Width="159" Height="40" Click="addRota_Click"/>
         </StackPanel>

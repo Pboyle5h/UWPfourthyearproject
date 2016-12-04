@@ -53,11 +53,18 @@ namespace UwpProject
                 Stream dataStream = response.GetResponseStream();
                 StreamReader objReader = new StreamReader(dataStream);
                 dynamic javaResponse= (objReader.ReadToEnd());
-                if (javaResponse=="Job Role")
+                if (javaResponse=="Manager")
+                {
+                    this.Frame.Navigate(typeof(ManagerPage));
+                    App.user = Username;
+                        
+                }
+
+                if (javaResponse == "Employee")
                 {
                     this.Frame.Navigate(typeof(EmployeePage));
                     App.user = Username;
-                        
+
                 }
                 response.Dispose();
             }

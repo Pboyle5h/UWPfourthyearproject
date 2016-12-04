@@ -46,6 +46,7 @@ namespace UwpProject
 
     public sealed partial class viewRota : Page
     {
+        CallRota cr = new CallRota();
         List<RootObject> test = new List<RootObject>();
         //RootObject test = new RootObject();
         public viewRota()
@@ -72,7 +73,8 @@ namespace UwpProject
                 dynamic javaResponse = (objReader.ReadToEnd());   
                // RootObject rt = JsonConvert.DeserializeObject<RootObject>(javaResponse);
                 var list = JsonConvert.DeserializeObject<List<RootObject>>(javaResponse);
-               
+                
+
                 foreach (RootObject rt in list)
                 {
 
@@ -109,20 +111,7 @@ namespace UwpProject
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-
-
-            //textBlock.Text = test.Date + test.Details + test.Hours+ test.Time;
-            foreach (RootObject rt in test)
-            {
-
-                textBlockRota.Text += "Date: " + rt.Date +
-                                 "\r\nTime: " + rt.Time +
-                                 "\r\nDetails: " + rt.Details +
-                                 "\r\nHours: " + rt.Hours +
-                                 "\r\n\r\n";
-
-            }
-
+               cr.Add(sender,test);
         }
     }
 
