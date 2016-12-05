@@ -43,7 +43,8 @@ namespace UwpProject
         {
             Username = usernameTbox.Text;
             Password = PasswordTbox.Text;
-            string uri = "http://localhost:4567/login/" + usernameTbox.Text + "/" + PasswordTbox.Text;
+            string uri = "https://javaapiuwp.herokuapp.com/login/" + usernameTbox.Text + "/" + PasswordTbox.Text;
+   
             WebRequest wrGETURL = WebRequest.Create(uri);
             wrGETURL.Proxy = null;
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,22 +24,27 @@ namespace UwpProject
     /// </summary>
     public sealed partial class Rota : Page
     {
+        public class RootObject
+        {
+            public string Username { get; set; }
+          
+        }
         public Rota()
         {
             this.InitializeComponent();
+            getUsernames();
         }
-
         private async void addRota_Click(object sender, RoutedEventArgs e)
         {
-         
-            string uri = "http://localhost:4567/rota/" +App.user+"/"
+
+            string uri = "http://localhost:4567/rota/" + Username.SelectionBoxItem + "/"
                                                        + StartDate.Date.DayOfWeek + "/"
-                                                       + StartDate.Date.Day+"-" 
-                                                       + StartDate.Date.Month+"-"
-                                                       + StartDate.Date.Year+"/" 
-                                                       + StartTime.Time.Hours +":"
-                                                       + StartTime.Time.Minutes + "/" 
-                                                       + Details.Text + "/" 
+                                                       + StartDate.Date.Day + "-"
+                                                       + StartDate.Date.Month + "-"
+                                                       + StartDate.Date.Year + "/"
+                                                       + StartTime.Time.Hours + ":"
+                                                       + StartTime.Time.Minutes + "/"
+                                                       + Details.Text + "/"
                                                        + Duration.SelectionBoxItem;
             WebRequest wrGETURL = WebRequest.Create(uri);
             wrGETURL.Proxy = null;
@@ -59,11 +65,43 @@ namespace UwpProject
             catch (WebException ex)
             {
                 //if connection failed, output message to user
-               // errorMessage.Visibility = Visibility.Visible;
-               // errorMessage.Text = "Failed to connect to server\nPlease check your internet connection";
+                // errorMessage.Visibility = Visibility.Visible;
+                // errorMessage.Text = "Failed to connect to server\nPlease check your internet connection";
 
             }
-        
+
+        }
+
+        private async void getUsernames()
+        {
+
+            string uri = "http://localhost:4567/getusername/";
+            WebRequest wrGETURL = WebRequest.Create(uri);
+            wrGETURL.Proxy = null;
+
+            try
+            {
+                WebResponse response = await wrGETURL.GetResponseAsync();
+                Stream dataStream = response.GetResponseStream();
+                StreamReader objReader = new StreamReader(dataStream);
+
+                dynamic javaResponse = (objReader.ReadToEnd());               
+                var list = JsonConvert.DeserializeObject<List<RootObject>>(javaResponse);
+                foreach (RootObject rt in list)
+                {
+                    Username.Items.Add(rt.Username);
+                }
+
+                response.Dispose();
+            }
+            catch (WebException ex)
+            {
+                //if connection failed, output message to user
+                // errorMessage.Visibility = Visibility.Visible;
+                // errorMessage.Text = "Failed to connect to server\nPlease check your internet connection";
+
+            }
+
         }
     }
 }

@@ -11,11 +11,13 @@
         <StackPanel VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     Width="310">
+            <TextBlock Margin="10" Text="Username:"/>
+            <ComboBox x:Name="Username" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             <TextBlock Margin="10" Text="Start:"/>
-            <DatePicker Name="StartDate" Margin="5"/>
-            <TimePicker Name="StartTime" Margin="5"/>
+            <DatePicker x:Name="StartDate" Margin="5"/>
+            <TimePicker x:Name="StartTime" Margin="5"/>
             <TextBlock Margin="10" Text="Details:"/>
-            <TextBox Name="Details" Width="300" MaxLength="255" HorizontalAlignment="Left"/>
+            <TextBox x:Name="Details" Width="300" MaxLength="255" HorizontalAlignment="Left"/>
             <TextBlock Margin="10" Text="Duration(Hours):"/>
             <ComboBox x:Name="Duration" SelectedIndex="0" HorizontalAlignment="Left">
                 <ComboBoxItem Tag="1" Content="1"/>

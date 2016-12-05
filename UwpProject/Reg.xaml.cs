@@ -77,7 +77,7 @@ namespace UwpProject
         {
           
             string role = "Employee";
-            string uri = "http://localhost:4567/test/" + usernameReg.Text+"/"+passwordReg.Text+"/"+emailReg.Text+"/"+role;
+            string uri = "https://javaapiuwp.herokuapp.com/" + usernameReg.Text+"/"+passwordReg.Text+"/"+emailReg.Text+"/"+role;
             WebRequest wrGETURL = WebRequest.Create(uri);
             wrGETURL.Proxy = null;
 

@@ -73,18 +73,24 @@ namespace UwpProject
                 dynamic javaResponse = (objReader.ReadToEnd());   
                // RootObject rt = JsonConvert.DeserializeObject<RootObject>(javaResponse);
                 var list = JsonConvert.DeserializeObject<List<RootObject>>(javaResponse);
-                
 
+                
                 foreach (RootObject rt in list)
                 {
+                    if (rt == null)
+                    {
+                        textBlock.Text = "No Rota to display";
+                    }
+                    else
+                    {
+                        textBlockRota.Text += "Date: " + rt.Date +
+                                         "\r\nTime: " + rt.Time +
+                                         "\r\nDetails: " + rt.Details +
+                                         "\r\nHours: " + rt.Hours +
+                                         "\r\n\r\n";
 
-                    textBlockRota.Text += "Date: " + rt.Date +
-                                     "\r\nTime: " + rt.Time +
-                                     "\r\nDetails: " + rt.Details +
-                                     "\r\nHours: " + rt.Hours+
-                                     "\r\n\r\n";
-
-                    test = list;
+                        test = list;
+                    }
                     
 
 
