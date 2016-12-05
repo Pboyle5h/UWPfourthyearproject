@@ -8,10 +8,12 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="loginBtn" Content="Login" HorizontalAlignment="Stretch" Margin="115,268,104,0" VerticalAlignment="Top" Click="loginBtn_Click"/>
-        <TextBox x:Name="usernameTbox" HorizontalAlignment="Left" Margin="115,71,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="146" Height="42"/>
-        <TextBox x:Name="PasswordTbox" HorizontalAlignment="Left" Margin="115,167,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Height="42" Width="141"/>
-        <Button x:Name="registerBtn" Content="Register" HorizontalAlignment="Left" Margin="115,305,0,0" VerticalAlignment="Top" Width="146" Click="registerBtn_Click"/>
-        <TextBlock x:Name="errorMessage" HorizontalAlignment="Left" Margin="115,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="loginBtn" Content="Login"  Margin="115,165,0,0" VerticalAlignment="Top" Click="loginBtn_Click" Width="141"/>
+        <TextBox x:Name="usernameTbox" HorizontalAlignment="Left" Margin="115,71,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="146" Height="42"/>
+        <Button x:Name="registerBtn" Content="Register" HorizontalAlignment="Left" Margin="115,212,0,0" VerticalAlignment="Top" Width="146" Click="registerBtn_Click"/>
+        <TextBlock x:Name="errorMessage" HorizontalAlignment="Left" Margin="115,253,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="UsernameTB" Text="Username:" HorizontalAlignment="Left" Margin="43,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="42"/>
+        <TextBlock x:Name="PasswordTB" Text="Password:" HorizontalAlignment="Left" Margin="48,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="42"/>
+        <PasswordBox x:Name="PasswordTbox" HorizontalAlignment="Left" Margin="115,118,0,0" VerticalAlignment="Top" Width="146" Height="42"/>
     </Grid>
 </Page>

@@ -37,7 +37,7 @@ namespace UwpProject
         private async void addRota_Click(object sender, RoutedEventArgs e)
         {
 
-            string uri = "http://localhost:4567/rota/" + Username.SelectionBoxItem + "/"
+            string uri = "https://javaapiuwp.herokuapp.com/rota/" + Username.SelectionBoxItem + "/"
                                                        + StartDate.Date.DayOfWeek + "/"
                                                        + StartDate.Date.Day + "-"
                                                        + StartDate.Date.Month + "-"
@@ -56,17 +56,17 @@ namespace UwpProject
                 StreamReader objReader = new StreamReader(dataStream);
 
                 dynamic javaResponse = (objReader.ReadToEnd());
-                if (javaResponse == "Duplicate")
+                if (javaResponse== "success")
                 {
-                    //toast(javaResponse);
+                    this.Frame.Navigate(typeof(ManagerPage));
                 }
                 response.Dispose();
             }
             catch (WebException ex)
             {
                 //if connection failed, output message to user
-                // errorMessage.Visibility = Visibility.Visible;
-                // errorMessage.Text = "Failed to connect to server\nPlease check your internet connection";
+               // errorMessage.Visibility = Visibility.Visible;
+               // errorMessage.Text = "Failed to connect to server\nPlease check your internet connection";
 
             }
 
@@ -75,7 +75,7 @@ namespace UwpProject
         private async void getUsernames()
         {
 
-            string uri = "http://localhost:4567/getusername/";
+            string uri = "https://javaapiuwp.herokuapp.com/getusername/";
             WebRequest wrGETURL = WebRequest.Create(uri);
             wrGETURL.Proxy = null;
 
@@ -102,6 +102,11 @@ namespace UwpProject
 
             }
 
+        }
+
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
         }
     }
 }

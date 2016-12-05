@@ -28,28 +28,31 @@ namespace UwpProject
         {
             foreach (RootObject rt in test)
             {
-                DateTime oDate = Convert.ToDateTime(rt.Date);
-                DateTime iDate = Convert.ToDateTime(rt.Time);
-                FrameworkElement element = (FrameworkElement)sender;
-                GeneralTransform transform = element.TransformToVisual(null);
-                Point point = transform.TransformPoint(new Point());
-                Rect rect = new Rect(point, new Size(element.ActualWidth, element.ActualHeight));
-                DateTimeOffset date = oDate.Date;
-                TimeSpan time = iDate.TimeOfDay;
-                Appointment appointment = new Appointment()
-                {
-                    StartTime = new DateTimeOffset(date.Year, date.Month, date.Day,
-                    time.Hours, time.Minutes, 0, TimeZoneInfo.Local.GetUtcOffset(DateTime.Now)),
-                    Subject = "testing",
-                    Location = "Testing",
-                    Details = rt.Details,
-                    Duration = TimeSpan.FromHours(Int32.Parse(rt.Hours)),
-                };
-                string id = await AppointmentManager.ShowAddAppointmentAsync(appointment, rect, Placement.Default);
-                if (string.IsNullOrEmpty(id))
-                    Show("Appointment Added", "Appointment App");
-                else
-                    Show(string.Format("Appointment {0} added", id), "Appointment App");
+                if (rt != null)
+                {                                  
+                    DateTime oDate = Convert.ToDateTime(rt.Date);
+                    DateTime iDate = Convert.ToDateTime(rt.Time);
+                    FrameworkElement element = (FrameworkElement)sender;
+                    GeneralTransform transform = element.TransformToVisual(null);
+                    Point point = transform.TransformPoint(new Point());
+                    Rect rect = new Rect(point, new Size(element.ActualWidth, element.ActualHeight));
+                    DateTimeOffset date = oDate.Date;
+                    TimeSpan time = iDate.TimeOfDay;
+                    Appointment appointment = new Appointment()
+                    {
+                        StartTime = new DateTimeOffset(date.Year, date.Month, date.Day,
+                        time.Hours, time.Minutes, 0, TimeZoneInfo.Local.GetUtcOffset(DateTime.Now)),
+                        Subject = "testing",
+                        Location = "Testing",
+                        Details = rt.Details,
+                        Duration = TimeSpan.FromHours(Int32.Parse(rt.Hours)),
+                    };
+                    string id = await AppointmentManager.ShowAddAppointmentAsync(appointment, rect, Placement.Default);
+                    if (string.IsNullOrEmpty(id))
+                        Show("Appointment Added", "Appointment App");
+                    else
+                        Show(string.Format("Appointment added", id), "Appointment App");
+                }
             }
         }
         

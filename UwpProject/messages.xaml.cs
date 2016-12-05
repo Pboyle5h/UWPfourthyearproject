@@ -22,35 +22,24 @@ namespace UwpProject
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    
-       
-    public class RootObject
+    public class MessageBody
     {
+       // public string Username { get; set; }
         public string Date { get; set; }
-        public string Time { get; set; }
         public string Details { get; set; }
-        public string Hours { get; set; }
     }
-
-
-
-    public sealed partial class viewRota : Page
+    public sealed partial class messages : Page
     {
-        CallRota cr = new CallRota();
-        List<RootObject> test = new List<RootObject>();
- 
-        public viewRota()
+        public messages()
         {
             this.InitializeComponent();
-            rotaView();      
+            messageView();
         }
 
-    
-
-    public async void rotaView()
+        public async void messageView()
         {
 
-            string uri = "https://javaapiuwp.herokuapp.com/viewRota/" + App.user;
+            string uri = "https://javaapiuwp.herokuapp.com/viewMessages";
             WebRequest wrGETURL = WebRequest.Create(uri);
             wrGETURL.Proxy = null;
 
@@ -60,26 +49,24 @@ namespace UwpProject
                 Stream dataStream = response.GetResponseStream();
                 StreamReader objReader = new StreamReader(dataStream);
 
-                dynamic javaResponse = (objReader.ReadToEnd());   
-                var list = JsonConvert.DeserializeObject<List<RootObject>>(javaResponse);
+                dynamic javaResponse = (objReader.ReadToEnd());
+                var list = JsonConvert.DeserializeObject<List<MessageBody>>(javaResponse);
 
                 //loops through the list elements
-                foreach (RootObject rt in list)
+                foreach (MessageBody rt in list)
                 {
                     //if the list element is not equal to null it enters the if statement
                     //This makes sure that only accurate data is shown.
                     if (rt != null)
                     {
                         //appends the rota on to the screen for the employee 
-                        textBlockRota.Text += "Date: " + rt.Date +
-                                         "\r\nTime: " + rt.Time +
-                                         "\r\nDetails: " + rt.Details +
-                                         "\r\nHours: " + rt.Hours +
+                        textBlockMessages.Text += "Date: " + rt.Date +                                        
+                                         "\r\nDetails: " + rt.Details +                                         
                                          "\r\n\r\n";
                         //passes the list into a global list to be transfered on button click
-                        test = list;
-                    }                  
-                    
+                        
+                    }
+
                 }
 
                 response.Dispose();
@@ -87,23 +74,15 @@ namespace UwpProject
             catch (WebException ex)
             {
                 //if connection failed, output message to user
-               errorMessage.Visibility = Visibility.Visible;
-               errorMessage.Text = "Failed to connect to server\nPlease check your internet connection";
+                errorMessage.Visibility = Visibility.Visible;
+                errorMessage.Text = "Failed to connect to server\nPlease check your internet connection";
 
             }
         }
-        //button click to return to previous page. 
+
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(EmployeePage));
-        }
-        // on button click its pass the list into the call rota class to be processed.
-        private void add_Click(object sender, RoutedEventArgs e)
-        {
-            cr.Add(sender, test);
+            this.Frame.Navigate(typeof(ManagerPage));
         }
     }
-
-    
 }
-

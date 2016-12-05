@@ -108,12 +108,18 @@
     <Compile Include="ManagerPage.xaml.cs">
       <DependentUpon>ManagerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="messages.xaml.cs">
+      <DependentUpon>messages.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reg.xaml.cs">
       <DependentUpon>Reg.xaml</DependentUpon>
     </Compile>
     <Compile Include="Rota.xaml.cs">
       <DependentUpon>Rota.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="timeOffxaml.xaml.cs">
+      <DependentUpon>timeOffxaml.xaml</DependentUpon>
     </Compile>
     <Compile Include="viewRota.xaml.cs">
       <DependentUpon>viewRota.xaml</DependentUpon>
@@ -156,11 +162,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="messages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Reg.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Rota.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="timeOffxaml.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -70,8 +70,8 @@ namespace UwpProject
         private async void submitReg_Click(System.Object sender, RoutedEventArgs e)
         {
           
-            string role = "Employee";
-            string uri = "http://localhost:4567/test/" + usernameReg.Text + "/" + passwordReg.Text + "/" + emailReg.Text + "/" + role;
+            string role = "Manager";
+            string uri = "https://javaapiuwp.herokuapp.com/test/" + usernameReg.Text + "/" + passwordReg.Password.ToString() + "/" + emailReg.Text + "/" + role;
             WebRequest wrGETURL = WebRequest.Create(uri);
             wrGETURL.Proxy = null;
 

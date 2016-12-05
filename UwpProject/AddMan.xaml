@@ -9,10 +9,10 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBox x:Name="usernameReg" HorizontalAlignment="Left" Margin="119,154,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="156"/>
-        <TextBox x:Name="passwordReg" HorizontalAlignment="Left" Margin="119,217,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="156"/>
-        <TextBox x:Name="emailReg" HorizontalAlignment="Left" Margin="119,281,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="156"/>
-        <Button x:Name="submitReg" Content="Submit" HorizontalAlignment="Left" Margin="125,355,0,0" VerticalAlignment="Top" Height="35" Width="150" Click="submitReg_Click"/>
-        <TextBox x:Name="errorMessage" HorizontalAlignment="Left" Margin="125,318,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <TextBox x:Name="emailReg" HorizontalAlignment="Left" Margin="119,228,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="156"/>
+        <Button x:Name="submitReg" Content="Submit" HorizontalAlignment="Left" Margin="119,265,0,0" VerticalAlignment="Top" Height="35" Width="150" Click="submitReg_Click"/>
+        <TextBlock x:Name="errorMessage" HorizontalAlignment="Left" Margin="119,305,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
+        <PasswordBox x:Name="passwordReg" HorizontalAlignment="Left" Margin="119,191,0,0" VerticalAlignment="Top" Width="156"/>
 
     </Grid>
 </Page>

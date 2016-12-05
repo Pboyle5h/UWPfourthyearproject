@@ -31,7 +31,9 @@
                 <ComboBoxItem Tag="9" Content="9"/>
                 <ComboBoxItem Tag="10" Content="10"/>
             </ComboBox>
-            <Button x:Name="addRota" Content="Add"  VerticalAlignment="Top" Width="159" Height="40" Click="addRota_Click"/>
-        </StackPanel>
+            </StackPanel>
+        <Button x:Name="back" Content="Back"  VerticalAlignment="Top" Width="159" Height="40"  Margin="191,529,0,0" Click="back_Click"/>
+        <Button x:Name="addRota" Content="Add"  VerticalAlignment="Top" Width="159" Height="40" Click="addRota_Click" Margin="25,529,0,0"/>
+
     </Grid>
 </Page>

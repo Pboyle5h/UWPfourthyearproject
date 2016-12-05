@@ -8,7 +8,9 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="viewRota" Content="View Rota" HorizontalAlignment="Left" Margin="131,153,0,0" VerticalAlignment="Top" Click="viewRota_Click"/>
+        <Button x:Name="viewRota" Content="View Rota"  Margin="135,59,0,0" VerticalAlignment="Top" Click="viewRota_Click" Width="110"/>
+        <Button x:Name="Book" Content="Book time off"  Margin="135,99,0,509" VerticalAlignment="Top" Click="Book_Click" />
+        <Button x:Name="Logout" Content="Logout"  Margin="135,136,0,0" VerticalAlignment="Top"  Width="110" Click="Logout_Click"/>
 
     </Grid>
 </Page>

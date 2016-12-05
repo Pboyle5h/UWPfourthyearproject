@@ -42,8 +42,8 @@ namespace UwpProject
         private async void loginBtn_Click(object sender, RoutedEventArgs e)
         {
             Username = usernameTbox.Text;
-            Password = PasswordTbox.Text;
-            string uri = "https://javaapiuwp.herokuapp.com/login/" + usernameTbox.Text + "/" + PasswordTbox.Text;
+            Password = PasswordTbox.Password.ToString();
+            string uri = "https://javaapiuwp.herokuapp.com/login/" + usernameTbox.Text + "/" + Password;
    
             WebRequest wrGETURL = WebRequest.Create(uri);
             wrGETURL.Proxy = null;
@@ -61,11 +61,16 @@ namespace UwpProject
                         
                 }
 
-                if (javaResponse == "Employee")
+                else if (javaResponse == "Employee")
                 {
                     this.Frame.Navigate(typeof(EmployeePage));
                     App.user = Username;
 
+                }
+                else
+                {
+                    errorMessage.Visibility = Visibility.Visible;
+                    errorMessage.Text = "Invalid Username or Password";
                 }
                 response.Dispose();
             }
