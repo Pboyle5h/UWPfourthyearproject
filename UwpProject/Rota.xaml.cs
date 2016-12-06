@@ -7,6 +7,7 @@ using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -58,7 +59,8 @@ namespace UwpProject
                 dynamic javaResponse = (objReader.ReadToEnd());
                 if (javaResponse== "success")
                 {
-                    this.Frame.Navigate(typeof(ManagerPage));
+                    IAsyncOperation<IUICommand> command = new MessageDialog("Rota Element Added", "Success").ShowAsync();
+                    
                 }
                 response.Dispose();
             }
@@ -106,7 +108,7 @@ namespace UwpProject
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            this.Frame.Navigate(typeof(ManagerPage));
         }
     }
 }

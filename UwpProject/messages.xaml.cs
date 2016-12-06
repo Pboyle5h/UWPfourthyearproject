@@ -24,7 +24,7 @@ namespace UwpProject
     /// </summary>
     public class MessageBody
     {
-       // public string Username { get; set; }
+        public string User { get; set; }
         public string Date { get; set; }
         public string Details { get; set; }
     }
@@ -57,15 +57,17 @@ namespace UwpProject
                 {
                     //if the list element is not equal to null it enters the if statement
                     //This makes sure that only accurate data is shown.
+
                     if (rt != null)
                     {
                         //appends the rota on to the screen for the employee 
-                        textBlockMessages.Text += "Date: " + rt.Date +                                        
-                                         "\r\nDetails: " + rt.Details +                                         
+                        textBlockMessages.Text += "Username: " + rt.User+
+                                         "\r\nDate: " + rt.Date +
+                                         "\r\nDetails: " + rt.Details +
                                          "\r\n\r\n";
                         //passes the list into a global list to be transfered on button click
-                        
-                    }
+                    }   
+                    
 
                 }
 

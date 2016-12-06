@@ -42,16 +42,16 @@ namespace UwpProject
                     {
                         StartTime = new DateTimeOffset(date.Year, date.Month, date.Day,
                         time.Hours, time.Minutes, 0, TimeZoneInfo.Local.GetUtcOffset(DateTime.Now)),
-                        Subject = "testing",
-                        Location = "Testing",
+                        Subject = "Working Today",
+                        Location = "Flannary's Hotel",
                         Details = rt.Details,
                         Duration = TimeSpan.FromHours(Int32.Parse(rt.Hours)),
                     };
                     string id = await AppointmentManager.ShowAddAppointmentAsync(appointment, rect, Placement.Default);
                     if (string.IsNullOrEmpty(id))
-                        Show("Appointment Added", "Appointment App");
+                        Show("Date Added", "Rota ");
                     else
-                        Show(string.Format("Appointment added", id), "Appointment App");
+                        Show(string.Format("Date added", id), "Rota");
                 }
             }
         }

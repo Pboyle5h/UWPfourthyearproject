@@ -6,6 +6,7 @@ using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -45,6 +46,12 @@ namespace UwpProject
                 StreamReader objReader = new StreamReader(dataStream);
 
                 dynamic javaResponse = (objReader.ReadToEnd());
+
+                if (javaResponse == "success")
+                {
+                    IAsyncOperation<IUICommand> command = new MessageDialog("Request Sent", "Success").ShowAsync();
+                    this.Frame.Navigate(typeof(EmployeePage));
+                }
                 response.Dispose();
             }
             catch (WebException ex)
@@ -56,6 +63,7 @@ namespace UwpProject
             }
 
         }
+
 
         private void back_Click(object sender, RoutedEventArgs e)
         {

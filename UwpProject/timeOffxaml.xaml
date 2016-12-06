@@ -8,11 +8,11 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Width="310" Margin="25,82,25,303">
+        <StackPanel HorizontalAlignment="Left" Width="310" Margin="25,82,25,303">
             <TextBlock Margin="10" Text="Date:"/>
             <DatePicker x:Name="StartDate" Margin="5"/>
             <TextBlock Margin="10" Text="Message:"/>
-            <TextBox x:Name="Details" Width="300" MaxLength="255" HorizontalAlignment="Left" Height="128"/>
+            <TextBox x:Name="Details" Width="300" MaxLength="255" HorizontalAlignment="Left" Height="128" />
         </StackPanel>
         <Button x:Name="back" Content="Back"  VerticalAlignment="Top" Width="159" Height="40"  Margin="191,342,0,0" Click="back_Click"/>
         <Button x:Name="send" Content="Send"  VerticalAlignment="Top" Width="159" Height="40"  Margin="25,342,0,0" Click="send_Click"/>
