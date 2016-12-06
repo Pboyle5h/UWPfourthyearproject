@@ -77,7 +77,7 @@ namespace UwpProject
         {
           
             string role = "Employee";
-            string uri = "https://javaapiuwp.herokuapp.com/" + usernameReg.Text+"/"+passwordReg.Text+"/"+emailReg.Text+"/"+role;
+            string uri = "https://javaapiuwp.herokuapp.com/test/" + usernameReg.Text+"/"+passwordReg.Password+"/"+emailReg.Text+"/"+role;
             WebRequest wrGETURL = WebRequest.Create(uri);
             wrGETURL.Proxy = null;
 
@@ -86,12 +86,13 @@ namespace UwpProject
                 WebResponse response = await wrGETURL.GetResponseAsync();
                 Stream dataStream = response.GetResponseStream();
                 StreamReader objReader = new StreamReader(dataStream);
-
                 dynamic javaResponse = (objReader.ReadToEnd());
+                //if java response equals dupliate then it shows the error toast
                 if (javaResponse == "Duplicate")
                 {
                     toast(javaResponse);
                 }
+                //if response = success return to sign in page.
                 else if (javaResponse == "success")
                 {
                     this.Frame.Navigate(typeof(MainPage));
